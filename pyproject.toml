@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "akadressen-upload"
+verison = "0.0.1"
+description = 'Simple helper to upload new AkaDressen to the Hompage'
+readme = "README.rst"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [
+    { name = "Hinrich Mahler", email = "akablas@mahlerhome.de" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.12",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "aioftp~=0.22",
+    "aiorem~=0.0.2",
+    "pydantic-settings~=2.3",
+]
+
+# RUFF:
+[tool.ruff]
+line-length = 99
+show-fixes = true
+
+[tool.ruff.lint]
+preview = true
+explicit-preview-rules = true
+select = ["E", "F", "I", "PL", "UP", "RUF", "PTH", "C4", "B", "PIE", "SIM", "RET", "RSE",
+    "G", "ISC", "PT", "ASYNC", "TCH", "SLOT", "PERF", "PYI", "FLY", "AIR", "RUF022",
+    "RUF023", "Q", "INP", "W", "YTT", "DTZ", "ARG"]
+ignore = ["ISC001"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.ruff.format]
+docstring-code-format = true
+skip-magic-trailing-comma = true
+
+# MYPY:
+[tool.mypy]
+warn_unused_ignores = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+show_error_codes = true
+python_version = "3.12"

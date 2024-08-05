@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.1
+    hooks:
+      # Run the formatter.
+      - id: ruff-format
+      # Run the linter.
+      - id: ruff
+        args:
+          - --fix
+          - --unsafe-fixes
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.372
+    hooks:
+      - id: pyright
+        name: pyright
+        files: ^(?!(tests)).*\.py$
+        additional_dependencies:
+          - aioftp~=0.22
+          - aiorem~=0.0.2
+          - pydantic-settings~=2.3
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.16.0
+    hooks:
+      - id: pyupgrade
+        args:
+          - --py312-plus
